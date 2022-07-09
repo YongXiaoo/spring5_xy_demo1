@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置User对象-->
+    <bean id = "user" class = "com.xy.spring5.User"> </bean>
+
+
+    <!--配置Book对象-->
+    <!--set方法注入属性-->
+    <bean id = "book" class="com.xy.spring5.Book">
+        <!--使用property完成属性注入-->
+        <property name="bname" value="百年孤独"></property>
+        <property name="bauthor" value="马尔克斯"></property>
+        <!--  null值      -->
+<!--        <property name="address" >-->
+<!--            <null/>-->
+<!--        </property>-->
+        <!--   属性值中包含特殊符号
+        1 可以把<>进行转义 &lt; &gt;
+        2 把特殊符号写到CDATA
+        -->
+        <property name="address">
+            <value><![CDATA[<<合肥>>]]></value>
+        </property>
+    </bean>
+
+    <!--配置Orders对象-->
+    <!--有参构造注入属性-->
+    <bean id = "orders" class="com.xy.spring5.Orders">
+        <constructor-arg name="oname" value="computer"></constructor-arg>
+        <constructor-arg name="address" value="China"></constructor-arg>
+    </bean>
+
+
+
+</beans>
