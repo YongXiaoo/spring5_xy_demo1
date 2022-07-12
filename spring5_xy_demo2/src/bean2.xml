@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+<!--    提取集合注入部分-->
+<!--    1. 在spring配置中完成命名空间引入 util-->
+    <util:list id = "bookList">
+        <value>高数</value>
+        <value>大物</value>
+        <value>大语</value>
+    </util:list>
+
+<!--    2. 提取list集合类型属性注入使用-->
+    <bean id="book" class="com.xy.spring5.collectiontype.Book" scope="prototype">
+        <property name="list" ref="bookList"></property>
+    </bean>
+
+</beans>
